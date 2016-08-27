@@ -9,10 +9,10 @@ import healthtech.Author
 class FeedsConsumerService {
     static rabbitSubscribe = [name: "fetch", routingKey: "fetch.feed"]
 
-    void handleMessage(Map feedMap) {
+    void handleMessage(Map message) {
         Article.withNewSession {
-           Author author= Author.get(feedMap.customerId)
-            Article article=new Article(feedMap.feed,author).save(flush: true)
+           Author author= Author.get(message?.authorId)
+            Article article=new Article(message?.feed,author).save(flush: true)
         }
 
     }

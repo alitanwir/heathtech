@@ -13,16 +13,19 @@ class Article {
     Date dateCreated
     Date lastUpdated
 
-    def beforeValidate() {
-        if (!link) link = title?.asFriendlyUrl()
-    }
+    static hasMany = [comments:Comment]
+
 
     static belongsTo = [author:Author]
 
     static constraints = {
         title unique: true
+        link nullable:true
 
     }
+
+    static mapping = {
+        description type: "text" }
 
     Article(FeedRecord feed,Author author){
         this.title=feed?.title

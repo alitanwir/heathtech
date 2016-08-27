@@ -250,5 +250,33 @@
             <column name="title"/>
         </createIndex>
     </changeSet>
+    <changeSet author="nakul (generated)" id="1472295975675-1">
+        <createTable tableName="article_comment">
+            <column name="article_comments_id" type="bigint"/>
+            <column name="comment_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472295975675-4">
+        <createIndex indexName="FK_80oxnmshogwe6db4qjvmik82g" tableName="article_comment">
+            <column name="comment_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472295975675-5">
+        <createIndex indexName="FK_9xjx1bsuyxoouy5k3bw5ldbtk" tableName="article_comment">
+            <column name="article_comments_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472295975675-2">
+        <addForeignKeyConstraint baseColumnNames="article_comments_id" baseTableName="article_comment" constraintName="FK_9xjx1bsuyxoouy5k3bw5ldbtk" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="article" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472295975675-3">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="article_comment" constraintName="FK_80oxnmshogwe6db4qjvmik82g" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="comment" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472296540057-1">
+        <modifyDataType columnName="description" newDataType="longtext" tableName="article"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472296540057-2">
+        <dropNotNullConstraint columnDataType="varchar(255)" columnName="link" tableName="article"/>
+    </changeSet>
 
 </databaseChangeLog>
