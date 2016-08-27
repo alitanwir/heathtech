@@ -29,7 +29,7 @@ class FriendlyUrlService {
 // Dashes -> dash
         text = text.replaceAll('-+', '-')
 // It must end in a letter or digit, otherwise we strip the last char
-        if (!text[-1].charAt.isLetterOrDigit()) text = text[0..-2]
+//        if (!text[-1].charAt.isLetterOrDigit()) text = text[0..-2]
         return text
     }
 

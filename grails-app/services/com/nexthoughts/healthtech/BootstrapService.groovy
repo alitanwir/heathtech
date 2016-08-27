@@ -7,6 +7,7 @@ import com.heathcart.AppUtil
 import grails.transaction.Transactional
 import healthtech.Article
 import healthtech.Author
+import healthtech.Comment
 
 @Transactional
 class BootstrapService {
@@ -44,10 +45,21 @@ class BootstrapService {
                 lastName = getRandomName() ?: 'Hadid'
                 Author author = new Author(firstName: firstName, lastName: lastName)
                 AppUtil.save(author)
+                createTestArticle(author)
+//                createTestComment(author)
             }
 
         }
         true
+    }
+
+    void createTestArticle(Author author){
+        Article article=new Article()
+        article.author=author
+        article.title="${author.firstName} Bootstrap Article "
+        article.description="DWXRIPTION DWXRIPTION DWXRIPTION "
+        author.addToArticles(article)
+        AppUtil.save(author)
     }
 
 }
