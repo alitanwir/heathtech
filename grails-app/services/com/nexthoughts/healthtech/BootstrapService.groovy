@@ -7,6 +7,7 @@ import com.healthtech.AppUtil
 import grails.transaction.Transactional
 import healthtech.Author
 import healthtech.Comment
+import healthtech.Article
 
 @Transactional
 class BootstrapService {
