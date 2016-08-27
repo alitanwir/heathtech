@@ -12,11 +12,10 @@ import java.text.SimpleDateFormat
 
 class FeedRetrieve {
 
-    static List<FeedRecord> getfeed() {
+    static List<FeedRecord> getfeed(String url) {
         SyndFeed feed = null;
         InputStream is = null;
         List<SyndEntry> syndEntryList
-        String url = "http://feeds.feedburner.com/HealthcareTechnology"
         String title
         String link
         Date datePublish
@@ -38,7 +37,7 @@ class FeedRetrieve {
             }
 
         } catch (Exception e) {
-            println("Exception occured ${e}")
+            e.printStackTrace()
         } finally {
             if (is != null) is.close()
         }
