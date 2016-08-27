@@ -5,7 +5,9 @@ import grails.transaction.Transactional
 @Transactional
 class RabbitMqFeedsService {
 
-    def serviceMethod() {
+    static rabbitSubscribe = [name: "fetch", routingKey: "fetch.feed"]
+
+    def fetchFeeds() {
 
     }
 }
