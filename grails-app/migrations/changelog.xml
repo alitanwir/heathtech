@@ -80,4 +80,155 @@
     <changeSet author="nakul (generated)" id="1472285205676-6">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_role" constraintName="FK_apcc8lxk2xnug8377fatvbn04" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="user" referencesUniqueColumn="false"/>
     </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-1">
+        <createTable tableName="article">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="articlePK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="link" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-2">
+        <createTable tableName="author">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="authorPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-3">
+        <createTable tableName="author_author">
+            <column name="author_authors_id" type="bigint"/>
+            <column name="author_id" type="bigint"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-4">
+        <createTable tableName="comment">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="commentPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-5">
+        <createTable tableName="follower">
+            <column autoIncrement="true" name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="followerPK"/>
+            </column>
+            <column name="version" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_created" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="follower_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="bit">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-11">
+        <createIndex indexName="FK_ebjpyd2e71hvfsuaiflecjl6a" tableName="article">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-12">
+        <createIndex indexName="FK_8x0c2cua9xtwtg9x4aes2lrgm" tableName="author_author">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-13">
+        <createIndex indexName="FK_ge1cvp20s66i91iq5m8om3hkq" tableName="author_author">
+            <column name="author_authors_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-14">
+        <createIndex indexName="FK_9aq5p2jgf17y6b38x5ayd90oc" tableName="comment">
+            <column name="author_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-15">
+        <createIndex indexName="FK_kmpje5dr4k11qus5t0my4obkq" tableName="follower">
+            <column name="follower_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-6">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="article" constraintName="FK_ebjpyd2e71hvfsuaiflecjl6a" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="author" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-7">
+        <addForeignKeyConstraint baseColumnNames="author_authors_id" baseTableName="author_author" constraintName="FK_ge1cvp20s66i91iq5m8om3hkq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="author" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-8">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="author_author" constraintName="FK_8x0c2cua9xtwtg9x4aes2lrgm" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="author" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-9">
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="comment" constraintName="FK_9aq5p2jgf17y6b38x5ayd90oc" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="author" referencesUniqueColumn="false"/>
+    </changeSet>
+    <changeSet author="nakul (generated)" id="1472287601282-10">
+        <addForeignKeyConstraint baseColumnNames="follower_id" baseTableName="follower" constraintName="FK_kmpje5dr4k11qus5t0my4obkq" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="author" referencesUniqueColumn="false"/>
+    </changeSet>
+
+
 </databaseChangeLog>
