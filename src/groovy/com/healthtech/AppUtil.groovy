@@ -1,7 +1,5 @@
-package com.heathcart
-/**
- * Created by yogesh on 27/8/16.
- */
+package com.healthtech
+
 class AppUtil {
 
     static Boolean save(def object) {

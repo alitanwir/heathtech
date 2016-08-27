@@ -3,9 +3,8 @@ package com.nexthoughts.healthtech
 import com.healthtech.Role
 import com.healthtech.User
 import com.healthtech.UserRole
-import com.heathcart.AppUtil
+import com.healthtech.AppUtil
 import grails.transaction.Transactional
-import healthtech.Article
 import healthtech.Author
 
 @Transactional
