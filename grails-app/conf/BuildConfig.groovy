@@ -70,6 +70,7 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.4.0"
         compile "org.grails.plugins:rabbitmq:1.0.0"
         compile ":remote-pagination:0.4.8"
+        compile "org.grails.plugins:quartz:1.0.2"
         // Uncomment these to enable additional asset-pipeline capabilities
         //compile ":sass-asset-pipeline:1.9.0"
         //compile ":less-asset-pipeline:1.10.0"
