@@ -30,7 +30,7 @@ class FeedRetrieve {
             syndEntryList = feed.getEntries()
             syndEntryList.each { synd ->
                 title = synd.getTitle()
-                datePublish = synd.publishedDate()
+                datePublish = synd.getPublishedDate()
                 link = synd.getLink()
                 description = descriptionByGeb(link)
                 FeedRecord feedRecord = new FeedRecord(title: title,datePublish: datePublish,link: link,description: description)
@@ -54,32 +54,6 @@ class FeedRetrieve {
             description = js."\$(document.getElementsByClassName('entry-content')).html()"
         }
         return description
-    }
-
-    //Geb method for scrap news
-
-    static void scrapGeb(){
-        println("In geb Scrap")
-        Browser.drive(){
-            go("https://blogs.msdn.microsoft.com/healthblog/")
-            int size = $("h2.entry-title").size()
-
-            0.upto(size){linkNo->
-                try{
-                    $("h2.entry-title",linkNo).click()
-                    Thread.sleep(1000)
-                    println("Title:${$("h1.entry-title").text()}")
-                    println("Time: ${$("time.entry-date.published.updated").text()}")
-                    println("description: ${js."\$(document.getElementsByClassName('entry-content single')).html()"}")
-                    go("https://blogs.msdn.microsoft.com/healthblog/")
-                }
-                catch (Exception ex){
-
-                }
-
-            }
-        }
-
     }
 }
 
