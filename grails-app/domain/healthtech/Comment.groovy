@@ -3,7 +3,7 @@ package healthtech
 class Comment {
 
     String comment
-    Boolean isDeleted
+    Boolean isDeleted=Boolean.FALSE
 
     Date dateCreated
     Date lastUpdated
