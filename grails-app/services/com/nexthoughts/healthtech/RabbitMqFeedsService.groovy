@@ -10,7 +10,11 @@ class RabbitMqFeedsService {
 
    void fetchFeeds(){
        String url1=grailsApplication.config.feeds.url1
+       println url1
        List feedsList=feedsService.getfeed(url1)
-       println feedsList
+       feedsList.each{
+           int index = Math.abs(new Random().nextInt() % 500) + 1
+           rabbitSend "fetch","fetch.feed",[feed:it,authorId:index]
+       }
    }
 }

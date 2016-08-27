@@ -1,18 +1,19 @@
 package com.nexthoughts.healthtech
 
 import grails.transaction.Transactional
+import healthfeeds.FeedRecord
+import healthtech.Article
+import healthtech.Author
 
 @Transactional
 class FeedsConsumerService {
     static rabbitSubscribe = [name: "fetch", routingKey: "fetch.feed"]
 
-    /*void handleMessage(SignupMailMessage message) {
-        println message.properties
-        try {
-            rabbitMQEmailExchangeHelperService.sendSignupMail(message)
-        } catch (Exception e) {
-            prettyExceptionService.flush("Exception while sending signup mail", e)
-            println "Handling exception at consumer"
+    void handleMessage(Map feedMap) {
+        Article.withNewSession {
+           Author author= Author.get(feedMap.customerId)
+            Article article=new Article(feedMap.feed,author).save(flush: true)
         }
-    }*/
+
+    }
 }

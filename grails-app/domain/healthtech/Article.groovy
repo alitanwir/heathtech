@@ -1,5 +1,7 @@
 package healthtech
 
+import healthfeeds.FeedRecord
+
 class Article {
 
     String title
@@ -16,5 +18,13 @@ class Article {
     static constraints = {
         title unique: true
 
+    }
+
+    Article(FeedRecord feed,Author author){
+        this.title=feed?.title
+        this.link=feed?.link
+        this.description=feed?.description
+        this.datePublished=feed.datePublish
+        this.author=author
     }
 }

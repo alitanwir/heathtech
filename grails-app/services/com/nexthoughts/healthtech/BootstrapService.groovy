@@ -34,17 +34,14 @@ class BootstrapService {
 
     Boolean createAuthors() {
         if (Author.count == 0) {
-
             String firstName
             String lastName
-
             999.times {
                 firstName = getRandomName() ?: 'Ziddane'
                 lastName = getRandomName() ?: 'Hadid'
                 Author author = new Author(firstName: firstName, lastName: lastName)
                 AppUtil.save(author)
             }
-
         }
         true
     }
