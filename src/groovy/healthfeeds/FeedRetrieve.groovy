@@ -38,7 +38,7 @@ class FeedRetrieve {
             }
 
         } catch (Exception e) {
-            println("Exception occured ${e}")
+           e.printStackTrace()
         } finally {
             if (is != null) is.close()
         }
