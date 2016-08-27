@@ -137,6 +137,11 @@ rabbitmq {
             signupEmail durable: true, autoDelete: false, binding: 'email.signup'
             passwordChanged durable: true, autoDelete: false, binding: 'email.password.changed'
         }
+
+        exchange name: 'fetch', type: topic, durable: true, autoDelete: false, {
+            scrap durable: true, autoDelete: false, binding: 'fetch.scrap'
+            feed durable: true, autoDelete: false, binding: 'fetch.feed'
+        }
     }
 }
 
