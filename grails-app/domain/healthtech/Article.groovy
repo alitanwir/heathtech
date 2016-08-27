@@ -5,7 +5,7 @@ class Article {
     String title
     String link
     String description
-    Boolean isDeleted
+    Boolean isDeleted=Boolean.FALSE
 
     Date dateCreated
     Date lastUpdated

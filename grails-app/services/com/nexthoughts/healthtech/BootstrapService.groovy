@@ -3,7 +3,10 @@ package com.nexthoughts.healthtech
 import com.healthtech.Role
 import com.healthtech.User
 import com.healthtech.UserRole
+import com.heathcart.AppUtil
 import grails.transaction.Transactional
+import healthtech.Article
+import healthtech.Author
 
 @Transactional
 class BootstrapService {
@@ -29,4 +32,22 @@ class BootstrapService {
             UserRole.create(admin, role, true)
         }
     }
+
+    Boolean createAuthors() {
+        if (Author.count == 0) {
+
+            String firstName
+            String lastName
+
+            999.times {
+                firstName = getRandomName() ?: 'Ziddane'
+                lastName = getRandomName() ?: 'Hadid'
+                Author author = new Author(firstName: firstName, lastName: lastName)
+                AppUtil.save(author)
+            }
+
+        }
+        true
+    }
+
 }
