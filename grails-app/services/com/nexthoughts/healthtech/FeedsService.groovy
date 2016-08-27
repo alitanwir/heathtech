@@ -1,18 +1,17 @@
-package healthfeeds
+package com.nexthoughts.healthtech
 
 import com.sun.syndication.feed.synd.SyndEntry
 import com.sun.syndication.feed.synd.SyndFeed
 import com.sun.syndication.io.SyndFeedInput
 import geb.Browser
-import geb.navigator.Navigator
+import grails.transaction.Transactional
+import healthfeeds.FeedRecord
 import org.xml.sax.InputSource
 
-import java.text.SimpleDateFormat
+@Transactional
+class FeedsService {
 
-
-class FeedRetrieve {
-
-    static List<FeedRecord> getfeed(String url) {
+     List<FeedRecord> getfeed(String url) {
         SyndFeed feed = null;
         InputStream is = null;
         List<SyndEntry> syndEntryList
@@ -37,7 +36,7 @@ class FeedRetrieve {
             }
 
         } catch (Exception e) {
-            e.printStackTrace()
+            println("Exception occured ${e}")
         } finally {
             if (is != null) is.close()
         }
@@ -45,7 +44,7 @@ class FeedRetrieve {
     }
 
     //Geb Method for feed description
-    static String descriptionByGeb(String url) {
+     String descriptionByGeb(String url) {
         String description
         Browser.drive() {
             setBaseUrl(url)
@@ -54,5 +53,5 @@ class FeedRetrieve {
         }
         return description
     }
-}
 
+}

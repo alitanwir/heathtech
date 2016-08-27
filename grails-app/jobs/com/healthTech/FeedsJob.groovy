@@ -3,11 +3,18 @@ package com.healthTech
 
 
 class FeedsJob {
+
+
     static triggers = {
-      simple repeatInterval: 5000l // execute job once in 5 seconds
+        cron cronExpression: "0 0 17 1/1 * ? *"
     }
 
     def execute() {
-        // execute job
+        log.info("###############################################################################")
+        log.info("###############################################################################")
+        log.info("Triggering RabbitMq Server to fetch feeds and data")
+        log.info("###############################################################################")
+        log.info("###############################################################################")
+
     }
 }

@@ -8,9 +8,9 @@ class Author {
     Date dateCreated
     Date lastUpdated
 
-    Boolean isDeleted = Boolean.FALSE
+    Boolean isDeleted=Boolean.FALSE
 
-    static hasMany = [articles: Article, authors: Author, followers: Follower]
+    static hasMany = [articles: Article, comments: Comment, followers: Follower]
 
     static constraints = {
     }

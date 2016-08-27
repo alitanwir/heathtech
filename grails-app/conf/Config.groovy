@@ -162,3 +162,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/favicon.ico':  ['permitAll']
 ]
 
+
+
+
+feeds.url1="http://feeds.feedburner.com/HealthcareTechnology"
