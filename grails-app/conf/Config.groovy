@@ -115,3 +115,50 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+
+grails.plugin.databasemigration.changelogFileName = 'changelog.xml'
+grails.plugin.databasemigration.updateOnStart = true
+grails.plugin.databasemigration.updateOnStartFileNames = ['changelog.xml']
+
+
+//RabbitMq Configuration
+
+rabbitmq {
+    connectionfactory {
+        username = 'guest'
+        password = 'guest'
+        hostname = 'localhost'
+//        consumers = 5
+    }
+
+    queues = {
+        exchange name: 'email', type: topic, durable: true, autoDelete: false, {
+            signupEmail durable: true, autoDelete: false, binding: 'email.signup'
+            passwordChanged durable: true, autoDelete: false, binding: 'email.password.changed'
+        }
+
+        exchange name: 'fetch', type: topic, durable: true, autoDelete: false, {
+            scrap durable: true, autoDelete: false, binding: 'fetch.scrap'
+            feed durable: true, autoDelete: false, binding: 'fetch.feed'
+        }
+    }
+}
+
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.healthtech.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.healthtech.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.healthtech.Role'
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+	'/':                ['permitAll'],
+	'/index':           ['permitAll'],
+	'/index.gsp':       ['permitAll'],
+	'/assets/**':       ['permitAll'],
+	'/**/js/**':        ['permitAll'],
+	'/**/css/**':       ['permitAll'],
+	'/**/images/**':    ['permitAll'],
+	'/**/favicon.ico':  ['permitAll']
+]
+
