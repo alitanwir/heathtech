@@ -13,6 +13,10 @@ class Article {
     Date dateCreated
     Date lastUpdated
 
+    def beforeValidate() {
+        if (!link) link = title?.asFriendlyUrl()
+    }
+
     static belongsTo = [author:Author]
 
     static constraints = {
