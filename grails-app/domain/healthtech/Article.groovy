@@ -5,7 +5,8 @@ class Article {
     String title
     String link
     String description
-    Boolean isDeleted
+    Date datePublished
+    Boolean isDeleted=Boolean.FALSE
 
     Date dateCreated
     Date lastUpdated
@@ -13,5 +14,7 @@ class Article {
     static belongsTo = [author:Author]
 
     static constraints = {
+        title unique: true
+
     }
 }
